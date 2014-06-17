@@ -32,14 +32,13 @@
 
 #pragma mark - Authentication
 #import "AGAuthenticationModule.h"
-#import "AGAuthenticator.h"
-#import "AGAuthConfig.h"
+#import "AGAuthenticationModuleAdapter.h"
+
 
 #pragma mark - Authorization
 #import "AGAuthzModule.h"
-#import "AGAuthorizer.h"
-#import "AGAuthzConfig.h"
-#import "AGAccountManager.h"
+#import "AGOAuth2AuthzModuleAdapter.h"
+#import "AGOAuth2AuthzSession.h"
 
 
 #endif /* _AEROGEAR_PIPE_ */
