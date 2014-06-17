@@ -15,23 +15,32 @@
  * limitations under the License.
  */
 
-#import <Foundation/Foundation.h>
+#ifndef _AEROGEAR_PIPE_
+#define _AEROGEAR_PIPE_
 
-#import "AGCryptoConfig.h"
+#pragma mark - base
+#import "AGConfig.h"
 
-/**
- * Configuration object for an AGPasswordKeyServices provider.
- */
-@interface AGKeyStoreCryptoConfig : NSObject <AGCryptoConfig>
+#pragma mark - Pipeline
+#import "AGPipe.h"
+#import "AGPipeline.h"
+#import "AGPipeConfig.h"
+#import "AGNSMutableArray+Paging.h"
+#import "AGMultipart.h"
 
-/**
- * Applies the alias to the configuration.
- */
-@property (nonatomic, copy) NSString *alias;
+#pragma mark - Security
 
-/**
- * Applies the password to the configuration.
- */
-@property (nonatomic, copy) NSString *password;
+#pragma mark - Authentication
+#import "AGAuthenticationModule.h"
+#import "AGAuthenticator.h"
+#import "AGAuthConfig.h"
 
-@end
+#pragma mark - Authorization
+#import "AGAuthzModule.h"
+#import "AGAuthorizer.h"
+#import "AGAuthzConfig.h"
+#import "AGAccountManager.h"
+
+
+#endif /* _AEROGEAR_PIPE_ */
+
