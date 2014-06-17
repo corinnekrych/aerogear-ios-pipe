@@ -20,8 +20,8 @@
 #import "AGHttpClient.h"
 #import "AGMultipart.h"
 #import "AGHTTPMockHelper.h"
-#import "AGRestAuthentication.h"
-#import "AGRestOAuth2Module.h"
+//#import "AGRestAuthentication.h"
+//#import "AGRestOAuth2Module.h"
 
 // expose private methods of AGHttpClient for the purpose of testing
 @interface AGHttpClient (Testing)
@@ -307,326 +307,326 @@ SPEC_BEGIN(AGHttpClientSpec)
                 [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
             });
         });
-
-        context(@"should honour authentication headers", ^{
-
-            __block AGHttpClient* _restClient = nil;
-
-            beforeEach(^{
-                NSURL* baseURL = [NSURL URLWithString:@"http://server.com/context/"];
-
-                AGRestAuthentication *authModulde = [[AGRestAuthentication alloc] init];
-                // use KVC to set fictitious authentication
-                [authModulde setValue:@{@"Authentication" : @"foo"} forKey:@"authTokens"];
-
-                _restClient = [AGHttpClient clientFor:baseURL timeout:60 sessionConfiguration:nil authModule:authModulde authzModule:nil];
-            });
-
-            afterEach(^{
-                // remove all handlers installed by test methods
-                // to avoid any interference
-                [AGHTTPMockHelper clearAllMockedRequests];
-
-                finishedFlag = NO;
-            });
-
-            it(@"when performing GET", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                [_restClient GET:@"projects" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                } ];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-
-            it(@"when performing PUT", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                NSMutableDictionary* project = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
-                                                     @"project-161-58-58", @"style", nil];
-
-                [_restClient PUT:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-
-
-            it(@"when performing PUT (multipart upload)", ^{
-                [AGHTTPMockHelper mockResponseStatus:200];
-
-                // create a dummy file to send
-
-                // access support directory
-                NSURL *tmpFolder = [[NSFileManager defaultManager]
-                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-
-                // write a file
-                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
-                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-
-                // construct the payload with the file added
-                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
-
-                // upload
-                [_restClient PUT:@"projects/0" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-                // remove dummy file
-                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-            });
-
-            it(@"when performing POST", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                NSMutableDictionary* project = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:@"First Project", @"title",
-                                                     @"project-161-58-58", @"style", nil];
-
-                [_restClient POST:@"projects" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-
-            it(@"when performing POST (multipart upload)", ^{
-                [AGHTTPMockHelper mockResponseStatus:200];
-
-                // create a dummy file to send
-
-                // access support directory
-                NSURL *tmpFolder = [[NSFileManager defaultManager]
-                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-
-                // write a file
-                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
-                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-
-                // construct the payload with the file added
-                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
-
-                // upload
-                [_restClient POST:@"projects" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-                // remove dummy file
-                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-            });
-
-            it(@"when performing DELETE", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                NSMutableDictionary* project = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
-                                                     @"project-161-58-58", @"style", nil];
-
-                [_restClient DELETE:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-        });
-
-        context(@"should honour authorization headers", ^{
-
-            __block AGHttpClient* _restClient = nil;
-            __block AGRestOAuth2Module *authzModule = nil;
-            beforeEach(^{
-                NSURL* baseURL = [NSURL URLWithString:@"http://server.com/context/"];
-
-                authzModule = [[AGRestOAuth2Module alloc] init];
-                
-                authzModule.sessionStorage.accessToken = @"ACCESS_TOKEN";
-                authzModule.sessionStorage.accessTokenExpirationDate = [[NSDate date] dateByAddingTimeInterval:3600];
-                
-                _restClient = [AGHttpClient clientFor:baseURL timeout:60 sessionConfiguration:nil authModule:nil authzModule:authzModule];
-            });
-
-            afterEach(^{
-                // remove all handlers installed by test methods
-                // to avoid any interference
-                [AGHTTPMockHelper clearAllMockedRequests];
-
-                finishedFlag = NO;
-            });
-
-            it(@"when performing GET", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                [_restClient GET:@"projects" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                } ];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-
-            it(@"when performing PUT", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                NSMutableDictionary* project = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
-                                                     @"project-161-58-58", @"style", nil];
-
-                [_restClient PUT:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-
-            it(@"when performing PUT (multipart upload)", ^{
-                [AGHTTPMockHelper mockResponseStatus:200];
-
-                // create a dummy file to send
-
-                // access support directory
-                NSURL *tmpFolder = [[NSFileManager defaultManager]
-                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-
-                // write a file
-                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
-                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-
-                // construct the payload with the file added
-                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
-
-                // upload
-                [_restClient PUT:@"projects/0" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-                // remove dummy file
-                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-            });
-
-            it(@"when performing POST", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                NSMutableDictionary* project = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:@"First Project", @"title",
-                                                     @"project-161-58-58", @"style", nil];
-
-                [_restClient POST:@"projects" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-
-
-            it(@"when performing POST (multipart upload)", ^{
-                [AGHTTPMockHelper mockResponseStatus:200];
-
-                // create a dummy file to send
-
-                // access support directory
-                NSURL *tmpFolder = [[NSFileManager defaultManager]
-                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
-
-                // write a file
-                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
-                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
-
-                // construct the payload with the file added
-                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
-
-                // upload
-                [_restClient POST:@"projects" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
-                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-                // remove dummy file
-                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-            });
-
-            it(@"when performing DELETE", ^{
-                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
-
-                NSMutableDictionary* project = [NSMutableDictionary
-                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
-                                                     @"project-161-58-58", @"style", nil];
-
-                [_restClient DELETE:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
-
-                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
-                    finishedFlag = YES;
-
-                } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                    // nope
-
-                }];
-
-                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
-            });
-        });
+//TODO Modularization move to another test
+//        context(@"should honour authentication headers", ^{
+//
+//            __block AGHttpClient* _restClient = nil;
+//
+//            beforeEach(^{
+//                NSURL* baseURL = [NSURL URLWithString:@"http://server.com/context/"];
+//
+//                AGRestAuthentication *authModulde = [[AGRestAuthentication alloc] init];
+//                // use KVC to set fictitious authentication
+//                [authModulde setValue:@{@"Authentication" : @"foo"} forKey:@"authTokens"];
+//
+//                _restClient = [AGHttpClient clientFor:baseURL timeout:60 sessionConfiguration:nil authModule:authModulde authzModule:nil];
+//            });
+//
+//            afterEach(^{
+//                // remove all handlers installed by test methods
+//                // to avoid any interference
+//                [AGHTTPMockHelper clearAllMockedRequests];
+//
+//                finishedFlag = NO;
+//            });
+//
+//            it(@"when performing GET", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                [_restClient GET:@"projects" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                } ];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//
+//            it(@"when performing PUT", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                NSMutableDictionary* project = [NSMutableDictionary
+//                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
+//                                                     @"project-161-58-58", @"style", nil];
+//
+//                [_restClient PUT:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//
+//
+//            it(@"when performing PUT (multipart upload)", ^{
+//                [AGHTTPMockHelper mockResponseStatus:200];
+//
+//                // create a dummy file to send
+//
+//                // access support directory
+//                NSURL *tmpFolder = [[NSFileManager defaultManager]
+//                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+//
+//                // write a file
+//                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
+//                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//
+//                // construct the payload with the file added
+//                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
+//
+//                // upload
+//                [_restClient PUT:@"projects/0" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//                // remove dummy file
+//                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
+//            });
+//
+//            it(@"when performing POST", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                NSMutableDictionary* project = [NSMutableDictionary
+//                        dictionaryWithObjectsAndKeys:@"First Project", @"title",
+//                                                     @"project-161-58-58", @"style", nil];
+//
+//                [_restClient POST:@"projects" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//
+//            it(@"when performing POST (multipart upload)", ^{
+//                [AGHTTPMockHelper mockResponseStatus:200];
+//
+//                // create a dummy file to send
+//
+//                // access support directory
+//                NSURL *tmpFolder = [[NSFileManager defaultManager]
+//                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+//
+//                // write a file
+//                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
+//                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//
+//                // construct the payload with the file added
+//                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
+//
+//                // upload
+//                [_restClient POST:@"projects" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//                // remove dummy file
+//                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
+//            });
+//
+//            it(@"when performing DELETE", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                NSMutableDictionary* project = [NSMutableDictionary
+//                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
+//                                                     @"project-161-58-58", @"style", nil];
+//
+//                [_restClient DELETE:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authentication"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//        });
+//
+//        context(@"should honour authorization headers", ^{
+//
+//            __block AGHttpClient* _restClient = nil;
+//            __block AGRestOAuth2Module *authzModule = nil;
+//            beforeEach(^{
+//                NSURL* baseURL = [NSURL URLWithString:@"http://server.com/context/"];
+//
+//                authzModule = [[AGRestOAuth2Module alloc] init];
+//                
+//                authzModule.sessionStorage.accessToken = @"ACCESS_TOKEN";
+//                authzModule.sessionStorage.accessTokenExpirationDate = [[NSDate date] dateByAddingTimeInterval:3600];
+//                
+//                _restClient = [AGHttpClient clientFor:baseURL timeout:60 sessionConfiguration:nil authModule:nil authzModule:authzModule];
+//            });
+//
+//            afterEach(^{
+//                // remove all handlers installed by test methods
+//                // to avoid any interference
+//                [AGHTTPMockHelper clearAllMockedRequests];
+//
+//                finishedFlag = NO;
+//            });
+//
+//            it(@"when performing GET", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                [_restClient GET:@"projects" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                } ];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//
+//            it(@"when performing PUT", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                NSMutableDictionary* project = [NSMutableDictionary
+//                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
+//                                                     @"project-161-58-58", @"style", nil];
+//
+//                [_restClient PUT:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//
+//            it(@"when performing PUT (multipart upload)", ^{
+//                [AGHTTPMockHelper mockResponseStatus:200];
+//
+//                // create a dummy file to send
+//
+//                // access support directory
+//                NSURL *tmpFolder = [[NSFileManager defaultManager]
+//                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+//
+//                // write a file
+//                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
+//                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//
+//                // construct the payload with the file added
+//                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
+//
+//                // upload
+//                [_restClient PUT:@"projects/0" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//                // remove dummy file
+//                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
+//            });
+//
+//            it(@"when performing POST", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                NSMutableDictionary* project = [NSMutableDictionary
+//                        dictionaryWithObjectsAndKeys:@"First Project", @"title",
+//                                                     @"project-161-58-58", @"style", nil];
+//
+//                [_restClient POST:@"projects" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//
+//
+//            it(@"when performing POST (multipart upload)", ^{
+//                [AGHTTPMockHelper mockResponseStatus:200];
+//
+//                // create a dummy file to send
+//
+//                // access support directory
+//                NSURL *tmpFolder = [[NSFileManager defaultManager]
+//                        URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:YES error:nil];
+//
+//                // write a file
+//                NSURL *file = [tmpFolder URLByAppendingPathComponent:@"file.txt"];
+//                [@"Lorem ipsum dolor sit amet," writeToURL:file atomically:YES encoding:NSUTF8StringEncoding error:nil];
+//
+//                // construct the payload with the file added
+//                NSDictionary *parameters = @{@"somekey": @"somevalue", @"file":file};
+//
+//                // upload
+//                [_restClient POST:@"projects" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//                // remove dummy file
+//                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
+//            });
+//
+//            it(@"when performing DELETE", ^{
+//                [AGHTTPMockHelper mockResponse:[PROJECTS dataUsingEncoding:NSUTF8StringEncoding]];
+//
+//                NSMutableDictionary* project = [NSMutableDictionary
+//                        dictionaryWithObjectsAndKeys:@"0", @"id", @"First Project", @"title",
+//                                                     @"project-161-58-58", @"style", nil];
+//
+//                [_restClient DELETE:@"projects/0" parameters:project success:^(NSURLSessionDataTask *task, id responseObject) {
+//
+//                    [task.originalRequest.allHTTPHeaderFields[@"Authorization"] shouldNotBeNil];
+//                    finishedFlag = YES;
+//
+//                } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//                    // nope
+//
+//                }];
+//
+//                [[expectFutureValue(theValue(finishedFlag)) shouldEventuallyBeforeTimingOutAfter(5)] beYes];
+//            });
+//        });
     });
 
 SPEC_END

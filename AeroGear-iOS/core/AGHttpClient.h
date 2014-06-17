@@ -19,7 +19,7 @@
 #import "AFNetworking.h"
 #import "AGAuthenticationModuleAdapter.h"
 #import "AGOAuth2AuthzModuleAdapter.h"
-
+//TODO modularization decouple AGHttpCleint from
 @interface AGHttpClient : AFHTTPSessionManager
 
 + (instancetype)clientFor:(NSURL *)url;

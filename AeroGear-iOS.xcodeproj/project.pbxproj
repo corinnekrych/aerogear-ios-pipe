@@ -9,34 +9,21 @@
 /* Begin PBXBuildFile section */
 		08D43362329A46488E585071 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D1DA06FAB24A18AB6A5963 /* libPods.a */; };
 		1D0A1358119648AFB949959A /* libPods-AeroGear-iOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E065C8DDD305422BBB3237D5 /* libPods-AeroGear-iOSTests.a */; };
-		38EAB6DDCEDC350EEEB294DF /* AGRestOAuth2Module.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB8B515B16A800D9ACAC2 /* AGRestOAuth2Module.m */; };
-		38EAB9B564447C63EDA4F3BD /* AGAuthzConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EABA4C6581856F7241CB57 /* AGAuthzConfiguration.m */; };
-		38EABEA20822C924B3E36AED /* AGAuthorizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 38EAB9A5AFB633EF9E1DFD6C /* AGAuthorizer.m */; };
 		3A3FA0F7DE3FD6E3C9B77946 /* AGPageBaseExtractorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA74285D05B5DFF014629 /* AGPageBaseExtractorSpec.m */; };
 		3A3FA1B99E5E1EBF301778DA /* AGPageWebLinkingExtractorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA7B7F632A59A9D4C53F1 /* AGPageWebLinkingExtractorSpec.m */; };
 		3A3FA2A2DD7A17FFCE0B9510 /* AGPageHeaderExtractorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA907DCCCFBA82B64DE9D /* AGPageHeaderExtractorSpec.m */; };
-		3A3FA4389A8490B5D7049667 /* AGAuthenticatorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA042B2FA52968D0AA580 /* AGAuthenticatorSpec.m */; };
-		3A3FA56A5AAB22B9B7FC779E /* AGRestAuthenticationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FAD425C7D92793D443079 /* AGRestAuthenticationSpec.m */; };
 		3A3FA6DEFAAE4B15941A6D48 /* AGPageBodyExtractorSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA5F4C5D127CFCD4C15D9 /* AGPageBodyExtractorSpec.m */; };
 		3A3FAC066A74B0FBA243D661 /* AGHttpClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA925D72453AC929348F1 /* AGHttpClientSpec.m */; };
 		3A3FAC6A723867E94FB16341 /* AGPaginationSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A3FA81DD1CD6812526D0D6A /* AGPaginationSpec.m */; };
-		4802A9FA192CAB000019ABE1 /* AGRestOAuth2FacebookModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 4802A9F9192CAB000019ABE1 /* AGRestOAuth2FacebookModule.m */; };
-		483609CB18EED02300FD73B6 /* AGAuthorizerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 483609CA18EED02300FD73B6 /* AGAuthorizerSpec.m */; };
-		483E6D3B188F1F61004AFA1F /* AGRestAuthzModuleSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 483E6D3A188F1F61004AFA1F /* AGRestAuthzModuleSpec.m */; };
-		487C2719191CC8F800C43B49 /* AGOAuth2AuthzSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 487C2718191CC8F800C43B49 /* AGOAuth2AuthzSession.m */; };
 		489BC1A017E0C1F80008DAEF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 489BC19F17E0C1F80008DAEF /* libsqlite3.0.dylib */; };
-		57277E111641364300C50DC5 /* AGAuthConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 57277E101641364300C50DC5 /* AGAuthConfiguration.m */; };
+		48D26FE119508F9B00CDF021 /* AGOAuth2AuthzSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 48D26FE019508F9B00CDF021 /* AGOAuth2AuthzSession.m */; };
 		5732142B16451B5E00836D8E /* AGConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 57C2616116402B2D00793C0F /* AGConfig.h */; };
 		5732142F16451B7C00836D8E /* AGPipe.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 573CBD9615E3ECA80071E7A6 /* AGPipe.h */; };
 		5732143016451B8100836D8E /* AGPipeline.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 573CBD9815E3ECB60071E7A6 /* AGPipeline.h */; };
 		5732143116451B8700836D8E /* AGPipeConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 57C2616216402B3C00793C0F /* AGPipeConfig.h */; };
-		5732143216451B8F00836D8E /* AGAuthenticator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 573B709B161DA2AE009F0452 /* AGAuthenticator.h */; };
 		5732143316451B9600836D8E /* AGAuthenticationModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 573B709A161DA29A009F0452 /* AGAuthenticationModule.h */; };
-		5732143416451BA200836D8E /* AGAuthConfig.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 57277E0D1641362D00C50DC5 /* AGAuthConfig.h */; };
 		5732143516451BB400836D8E /* AeroGear-Pipe.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 573CBD9E15E3EE1F0071E7A6 /* AeroGear-Pipe.h */; };
 		57345BD815E3D18600B74FEB /* AGHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 57345BD715E3D18600B74FEB /* AGHttpClient.m */; };
-		573B709D161DA2AE009F0452 /* AGAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 573B709C161DA2AE009F0452 /* AGAuthenticator.m */; };
-		573B70A1161DDD1C009F0452 /* AGRestAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 573B70A0161DDD1C009F0452 /* AGRestAuthentication.m */; };
 		573CBD9A15E3ECB60071E7A6 /* AGPipeline.m in Sources */ = {isa = PBXBuildFile; fileRef = 573CBD9915E3ECB60071E7A6 /* AGPipeline.m */; };
 		573CBD9D15E3ED7F0071E7A6 /* AGRESTPipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 573CBD9C15E3ED7F0071E7A6 /* AGRESTPipe.m */; };
 		573CBDA415E4F31B0071E7A6 /* AGPipelineSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 573CBDA315E4F31B0071E7A6 /* AGPipelineSpec.m */; };
@@ -90,9 +77,7 @@
 			dstSubfolderSpec = 16;
 			files = (
 				5732143516451BB400836D8E /* AeroGear-Pipe.h in CopyFiles */,
-				5732143416451BA200836D8E /* AGAuthConfig.h in CopyFiles */,
 				5732143316451B9600836D8E /* AGAuthenticationModule.h in CopyFiles */,
-				5732143216451B8F00836D8E /* AGAuthenticator.h in CopyFiles */,
 				5732143116451B8700836D8E /* AGPipeConfig.h in CopyFiles */,
 				5732143016451B8100836D8E /* AGPipeline.h in CopyFiles */,
 				5732142F16451B7C00836D8E /* AGPipe.h in CopyFiles */,
@@ -103,41 +88,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		38EAB0A7B277164A8D63F747 /* AGAuthorizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAuthorizer.h; sourceTree = "<group>"; };
 		38EAB406473CD49D16965D21 /* AGOAuth2AuthzModuleAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGOAuth2AuthzModuleAdapter.h; sourceTree = "<group>"; };
-		38EAB5ADD30E415FE3231321 /* AGAuthzConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAuthzConfig.h; sourceTree = "<group>"; };
 		38EAB725EDD875FE3054B456 /* AGAuthzModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAuthzModule.h; sourceTree = "<group>"; };
-		38EAB75EEDE516BF6B6EAEE7 /* AGAuthzConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGAuthzConfiguration.h; sourceTree = "<group>"; };
-		38EAB8B515B16A800D9ACAC2 /* AGRestOAuth2Module.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRestOAuth2Module.m; sourceTree = "<group>"; };
-		38EAB9A5AFB633EF9E1DFD6C /* AGAuthorizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAuthorizer.m; sourceTree = "<group>"; };
-		38EABA4C6581856F7241CB57 /* AGAuthzConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAuthzConfiguration.m; sourceTree = "<group>"; };
-		38EABEBAA0F7D219BD79AC96 /* AGRestOAuth2Module.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRestOAuth2Module.h; sourceTree = "<group>"; };
-		3A3FA042B2FA52968D0AA580 /* AGAuthenticatorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAuthenticatorSpec.m; sourceTree = "<group>"; };
 		3A3FA5F4C5D127CFCD4C15D9 /* AGPageBodyExtractorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPageBodyExtractorSpec.m; sourceTree = "<group>"; };
 		3A3FA74285D05B5DFF014629 /* AGPageBaseExtractorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPageBaseExtractorSpec.m; sourceTree = "<group>"; };
 		3A3FA7B7F632A59A9D4C53F1 /* AGPageWebLinkingExtractorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPageWebLinkingExtractorSpec.m; sourceTree = "<group>"; };
 		3A3FA81DD1CD6812526D0D6A /* AGPaginationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPaginationSpec.m; sourceTree = "<group>"; };
 		3A3FA907DCCCFBA82B64DE9D /* AGPageHeaderExtractorSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPageHeaderExtractorSpec.m; sourceTree = "<group>"; };
 		3A3FA925D72453AC929348F1 /* AGHttpClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGHttpClientSpec.m; sourceTree = "<group>"; };
-		3A3FAD425C7D92793D443079 /* AGRestAuthenticationSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRestAuthenticationSpec.m; sourceTree = "<group>"; };
-		4802A9F8192CAB000019ABE1 /* AGRestOAuth2FacebookModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRestOAuth2FacebookModule.h; sourceTree = "<group>"; };
-		4802A9F9192CAB000019ABE1 /* AGRestOAuth2FacebookModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRestOAuth2FacebookModule.m; sourceTree = "<group>"; };
-		483609CA18EED02300FD73B6 /* AGAuthorizerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGAuthorizerSpec.m; sourceTree = "<group>"; };
-		483E6D3A188F1F61004AFA1F /* AGRestAuthzModuleSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRestAuthzModuleSpec.m; sourceTree = "<group>"; };
-		487C2717191CC8F800C43B49 /* AGOAuth2AuthzSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGOAuth2AuthzSession.h; sourceTree = "<group>"; };
-		487C2718191CC8F800C43B49 /* AGOAuth2AuthzSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGOAuth2AuthzSession.m; sourceTree = "<group>"; };
 		489BC19F17E0C1F80008DAEF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		57277E0D1641362D00C50DC5 /* AGAuthConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AGAuthConfig.h; path = security/AGAuthConfig.h; sourceTree = "<group>"; };
-		57277E0F1641364300C50DC5 /* AGAuthConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAuthConfiguration.h; path = security/AGAuthConfiguration.h; sourceTree = "<group>"; };
-		57277E101641364300C50DC5 /* AGAuthConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAuthConfiguration.m; path = security/AGAuthConfiguration.m; sourceTree = "<group>"; };
+		48D26FDF19508F9B00CDF021 /* AGOAuth2AuthzSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGOAuth2AuthzSession.h; sourceTree = "<group>"; };
+		48D26FE019508F9B00CDF021 /* AGOAuth2AuthzSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGOAuth2AuthzSession.m; sourceTree = "<group>"; };
 		57345BD615E3D18600B74FEB /* AGHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGHttpClient.h; path = core/AGHttpClient.h; sourceTree = "<group>"; };
 		57345BD715E3D18600B74FEB /* AGHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGHttpClient.m; path = core/AGHttpClient.m; sourceTree = "<group>"; };
 		573B709A161DA29A009F0452 /* AGAuthenticationModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAuthenticationModule.h; path = security/AGAuthenticationModule.h; sourceTree = "<group>"; };
-		573B709B161DA2AE009F0452 /* AGAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAuthenticator.h; path = security/AGAuthenticator.h; sourceTree = "<group>"; };
-		573B709C161DA2AE009F0452 /* AGAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGAuthenticator.m; path = security/AGAuthenticator.m; sourceTree = "<group>"; };
 		573B709E161DDB5E009F0452 /* AGAuthenticationModuleAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGAuthenticationModuleAdapter.h; path = security/AGAuthenticationModuleAdapter.h; sourceTree = "<group>"; };
-		573B709F161DDD1C009F0452 /* AGRestAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGRestAuthentication.h; path = security/AGRestAuthentication.h; sourceTree = "<group>"; };
-		573B70A0161DDD1C009F0452 /* AGRestAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGRestAuthentication.m; path = security/AGRestAuthentication.m; sourceTree = "<group>"; };
 		573CBD9615E3ECA80071E7A6 /* AGPipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGPipe.h; path = pipeline/AGPipe.h; sourceTree = "<group>"; };
 		573CBD9815E3ECB60071E7A6 /* AGPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AGPipeline.h; path = pipeline/AGPipeline.h; sourceTree = "<group>"; };
 		573CBD9915E3ECB60071E7A6 /* AGPipeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AGPipeline.m; path = pipeline/AGPipeline.m; sourceTree = "<group>"; };
@@ -231,19 +196,10 @@
 		38EAB91D6CFFEDC2CAD696A4 /* Authorizer */ = {
 			isa = PBXGroup;
 			children = (
+				48D26FDF19508F9B00CDF021 /* AGOAuth2AuthzSession.h */,
+				48D26FE019508F9B00CDF021 /* AGOAuth2AuthzSession.m */,
 				38EAB406473CD49D16965D21 /* AGOAuth2AuthzModuleAdapter.h */,
-				38EAB9A5AFB633EF9E1DFD6C /* AGAuthorizer.m */,
-				38EAB5ADD30E415FE3231321 /* AGAuthzConfig.h */,
-				38EAB0A7B277164A8D63F747 /* AGAuthorizer.h */,
 				38EAB725EDD875FE3054B456 /* AGAuthzModule.h */,
-				38EAB75EEDE516BF6B6EAEE7 /* AGAuthzConfiguration.h */,
-				38EABA4C6581856F7241CB57 /* AGAuthzConfiguration.m */,
-				487C2717191CC8F800C43B49 /* AGOAuth2AuthzSession.h */,
-				487C2718191CC8F800C43B49 /* AGOAuth2AuthzSession.m */,
-				38EAB8B515B16A800D9ACAC2 /* AGRestOAuth2Module.m */,
-				38EABEBAA0F7D219BD79AC96 /* AGRestOAuth2Module.h */,
-				4802A9F8192CAB000019ABE1 /* AGRestOAuth2FacebookModule.h */,
-				4802A9F9192CAB000019ABE1 /* AGRestOAuth2FacebookModule.m */,
 			);
 			name = Authorizer;
 			path = security/Authorizer;
@@ -252,15 +208,8 @@
 		573B7099161D9D51009F0452 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				573B709B161DA2AE009F0452 /* AGAuthenticator.h */,
-				573B709C161DA2AE009F0452 /* AGAuthenticator.m */,
 				573B709A161DA29A009F0452 /* AGAuthenticationModule.h */,
 				573B709E161DDB5E009F0452 /* AGAuthenticationModuleAdapter.h */,
-				573B709F161DDD1C009F0452 /* AGRestAuthentication.h */,
-				573B70A0161DDD1C009F0452 /* AGRestAuthentication.m */,
-				57277E0D1641362D00C50DC5 /* AGAuthConfig.h */,
-				57277E0F1641364300C50DC5 /* AGAuthConfiguration.h */,
-				57277E101641364300C50DC5 /* AGAuthConfiguration.m */,
 				38EAB91D6CFFEDC2CAD696A4 /* Authorizer */,
 			);
 			name = Security;
@@ -274,16 +223,12 @@
 				573CBDAC15E546B70071E7A6 /* AGRestAdapterSpec.m */,
 				A0A37AD216AE905F00979868 /* AGPipeConfigSpec.m */,
 				6F7B5EEF17326E0A00ED4F83 /* AGPageConfigSpec.m */,
-				3A3FA042B2FA52968D0AA580 /* AGAuthenticatorSpec.m */,
-				483609CA18EED02300FD73B6 /* AGAuthorizerSpec.m */,
 				3A3FA925D72453AC929348F1 /* AGHttpClientSpec.m */,
 				3A3FA74285D05B5DFF014629 /* AGPageBaseExtractorSpec.m */,
 				3A3FA5F4C5D127CFCD4C15D9 /* AGPageBodyExtractorSpec.m */,
 				3A3FA907DCCCFBA82B64DE9D /* AGPageHeaderExtractorSpec.m */,
 				3A3FA7B7F632A59A9D4C53F1 /* AGPageWebLinkingExtractorSpec.m */,
 				3A3FA81DD1CD6812526D0D6A /* AGPaginationSpec.m */,
-				3A3FAD425C7D92793D443079 /* AGRestAuthenticationSpec.m */,
-				483E6D3A188F1F61004AFA1F /* AGRestAuthzModuleSpec.m */,
 				6F7C9A1A17CFBB6900058365 /* AGBaseAdapterSpec.m */,
 			);
 			name = "Unit Tests";
@@ -563,23 +508,16 @@
 				573CBD9A15E3ECB60071E7A6 /* AGPipeline.m in Sources */,
 				573CBD9D15E3ED7F0071E7A6 /* AGRESTPipe.m in Sources */,
 				57DCDB8415F20E4800289EA4 /* AGBaseAdapter.m in Sources */,
-				573B709D161DA2AE009F0452 /* AGAuthenticator.m in Sources */,
-				573B70A1161DDD1C009F0452 /* AGRestAuthentication.m in Sources */,
 				57C2616516402B8900793C0F /* AGPipeConfiguration.m in Sources */,
-				57277E111641364300C50DC5 /* AGAuthConfiguration.m in Sources */,
-				4802A9FA192CAB000019ABE1 /* AGRestOAuth2FacebookModule.m in Sources */,
 				A0A37ADA16AEAEDE00979868 /* AGNSMutableArray+Paging.m in Sources */,
 				6F573BBE1863080C000F4076 /* AGMultipart.m in Sources */,
 				6F14F191170EDA02001E14BA /* AGPageBodyExtractor.m in Sources */,
 				6F14F192170EDA02001E14BA /* AGPageHeaderExtractor.m in Sources */,
 				6F14F193170EDA02001E14BA /* AGPageWebLinkingExtractor.m in Sources */,
+				48D26FE119508F9B00CDF021 /* AGOAuth2AuthzSession.m in Sources */,
 				6FC8F192172FC84F00905C2F /* AGPageBaseExtractor.m in Sources */,
 				833BB20A1886C696007760EC /* AGCodeCoverageHelper.m in Sources */,
 				6F7B5EED17325A7D00ED4F83 /* AGPageConfiguration.m in Sources */,
-				38EABEA20822C924B3E36AED /* AGAuthorizer.m in Sources */,
-				38EAB9B564447C63EDA4F3BD /* AGAuthzConfiguration.m in Sources */,
-				487C2719191CC8F800C43B49 /* AGOAuth2AuthzSession.m in Sources */,
-				38EAB6DDCEDC350EEEB294DF /* AGRestOAuth2Module.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,12 +526,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				573CBDA415E4F31B0071E7A6 /* AGPipelineSpec.m in Sources */,
-				483609CB18EED02300FD73B6 /* AGAuthorizerSpec.m in Sources */,
 				573CBDAD15E546B70071E7A6 /* AGRestAdapterSpec.m in Sources */,
 				A0A37AD316AE905F00979868 /* AGPipeConfigSpec.m in Sources */,
 				6F7B5EF017326E0A00ED4F83 /* AGPageConfigSpec.m in Sources */,
 				6FFF85381760EE060044B5DE /* AGHTTPMockHelper.m in Sources */,
-				3A3FA4389A8490B5D7049667 /* AGAuthenticatorSpec.m in Sources */,
 				3A3FAC066A74B0FBA243D661 /* AGHttpClientSpec.m in Sources */,
 				833BB20C1886C6B1007760EC /* AGTestObserver.m in Sources */,
 				3A3FA0F7DE3FD6E3C9B77946 /* AGPageBaseExtractorSpec.m in Sources */,
@@ -601,9 +537,7 @@
 				3A3FA2A2DD7A17FFCE0B9510 /* AGPageHeaderExtractorSpec.m in Sources */,
 				3A3FA1B99E5E1EBF301778DA /* AGPageWebLinkingExtractorSpec.m in Sources */,
 				3A3FAC6A723867E94FB16341 /* AGPaginationSpec.m in Sources */,
-				3A3FA56A5AAB22B9B7FC779E /* AGRestAuthenticationSpec.m in Sources */,
 				6F7C9A1B17CFBB6900058365 /* AGBaseAdapterSpec.m in Sources */,
-				483E6D3B188F1F61004AFA1F /* AGRestAuthzModuleSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

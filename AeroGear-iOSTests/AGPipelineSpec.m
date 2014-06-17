@@ -18,7 +18,7 @@
 #import <Kiwi/Kiwi.h>
 #import "AGPipeline.h"
 #import "AGPipe.h"
-#import "AGAuthenticator.h"
+//#import "AGAuthenticator.h"
 
 SPEC_BEGIN(AGPipelineSpec)
 
